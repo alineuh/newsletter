@@ -1,37 +1,152 @@
 [
   [
-    {"zh":"股票","py":"gǔpiào","en":"stock, share","ex_zh":"我最近開始研究股票市場。","ex_py":"Wǒ zuìjìn kāishǐ yánjiū gǔpiào shìchǎng.","ex_en":"I recently started studying the stock market."},
-    {"zh":"風險","py":"fēngxiǎn","en":"risk","ex_zh":"投資一定有風險。","ex_py":"Tóuzī yídìng yǒu fēngxiǎn.","ex_en":"Investing always involves risk."},
-    {"zh":"習慣","py":"xíguàn","en":"habit","ex_zh":"早起是一個好習慣。","ex_py":"Zǎoqǐ shì yí ge hǎo xíguàn.","ex_en":"Waking up early is a good habit."}
+    {"zh": "其實", "py": "qíshí", "en": "actually, in fact", "ex_zh": "其實我早就知道了。", "ex_py": "Qíshí wǒ zǎo jiù zhīdào le.", "ex_en": "Actually, I already knew a long time ago."},
+    {"zh": "打算", "py": "dǎsuàn", "en": "to plan to", "ex_zh": "我打算週末去爬山。", "ex_py": "Wǒ dǎsuàn zhōumò qù páshān.", "ex_en": "I plan to go hiking this weekend."},
+    {"zh": "適應", "py": "shìyìng", "en": "to adapt to", "ex_zh": "我還在適應新的環境。", "ex_py": "Wǒ hái zài shìyìng xīn de huánjìng.", "ex_en": "I'm still adapting to the new environment."}
   ],
   [
-    {"zh":"通貨膨脹","py":"tōnghuò péngzhàng","en":"inflation","ex_zh":"通貨膨脹讓東西越來越貴。","ex_py":"Tōnghuò péngzhàng ràng dōngxi yuè lái yuè guì.","ex_en":"Inflation makes things more and more expensive."},
-    {"zh":"趨勢","py":"qūshì","en":"trend","ex_zh":"這個產業的趨勢很明顯。","ex_py":"Zhège chǎnyè de qūshì hěn míngxiǎn.","ex_en":"The trend in this industry is very clear."},
-    {"zh":"蔬菜","py":"shūcài","en":"vegetables","ex_zh":"我現在多吃蔬菜，少吃肉。","ex_py":"Wǒ xiànzài duō chī shūcài, shǎo chī ròu.","ex_en":"I now eat more vegetables and less meat."}
+    {"zh": "儘管", "py": "jǐnguǎn", "en": "even though, despite", "ex_zh": "儘管很累，他還是準時到了。", "ex_py": "Jǐnguǎn hěn lèi, tā háishi zhǔnshí dào le.", "ex_en": "Even though he was tired, he still arrived on time."},
+    {"zh": "提醒", "py": "tíxǐng", "en": "to remind", "ex_zh": "請提醒我明天要帶雨傘。", "ex_py": "Qǐng tíxǐng wǒ míngtiān yào dài yǔsǎn.", "ex_en": "Please remind me to bring an umbrella tomorrow."},
+    {"zh": "逐漸", "py": "zhújiàn", "en": "gradually", "ex_zh": "天氣逐漸變冷了。", "ex_py": "Tiānqì zhújiàn biàn lěng le.", "ex_en": "The weather is gradually getting colder."}
   ],
   [
-    {"zh":"資訊","py":"zīxùn","en":"information (Taiwan usage; mainland: 信息)","ex_zh":"資訊安全越來越重要。","ex_py":"Zīxùn ānquán yuè lái yuè zhòngyào.","ex_en":"Information security is more and more important."},
-    {"zh":"密碼","py":"mìmǎ","en":"password","ex_zh":"請不要把密碼告訴別人。","ex_py":"Qǐng búyào bǎ mìmǎ gàosù biérén.","ex_en":"Please don't tell anyone your password."},
-    {"zh":"計畫","py":"jìhuà","en":"plan","ex_zh":"我們的計畫是下個月去台灣旅行。","ex_py":"Wǒmen de jìhuà shì xià ge yuè qù Táiwān lǚxíng.","ex_en":"Our plan is to travel to Taiwan next month."}
+    {"zh": "避免", "py": "bìmiǎn", "en": "to avoid", "ex_zh": "我們應該避免浪費時間。", "ex_py": "Wǒmen yīnggāi bìmiǎn làngfèi shíjiān.", "ex_en": "We should avoid wasting time."},
+    {"zh": "突然", "py": "tūrán", "en": "suddenly", "ex_zh": "電燈突然熄滅了。", "ex_py": "Diàndēng tūrán xīmiè le.", "ex_en": "The light suddenly went out."},
+    {"zh": "麻煩", "py": "máfan", "en": "troublesome; to trouble someone", "ex_zh": "不好意思，麻煩你幫我拿一下。", "ex_py": "Bù hǎoyìsi, máfan nǐ bāng wǒ ná yíxià.", "ex_en": "Sorry to trouble you, could you hold this for me for a moment?"}
   ],
   [
-    {"zh":"經濟","py":"jīngjì","en":"economy","ex_zh":"今年的經濟成長比去年慢。","ex_py":"Jīnnián de jīngjì chéngzhǎng bǐ qùnián màn.","ex_en":"This year's economic growth is slower than last year's."},
-    {"zh":"選舉","py":"xuǎnjǔ","en":"election","ex_zh":"法國的總統選舉每五年舉行一次。","ex_py":"Fǎguó de zǒngtǒng xuǎnjǔ měi wǔ nián jǔxíng yí cì.","ex_en":"The French presidential election is held every five years."},
-    {"zh":"睡眠","py":"shuìmián","en":"sleep","ex_zh":"睡眠不足會影響工作。","ex_py":"Shuìmián bùzú huì yǐngxiǎng gōngzuò.","ex_en":"Lack of sleep affects work."}
+    {"zh": "嘗試", "py": "chángshì", "en": "to try, to attempt", "ex_zh": "我想嘗試一種新的做法。", "ex_py": "Wǒ xiǎng chángshì yì zhǒng xīn de zuòfǎ.", "ex_en": "I want to try a new approach."},
+    {"zh": "效果", "py": "xiàoguǒ", "en": "effect, result", "ex_zh": "這個方法的效果很好。", "ex_py": "Zhège fāngfǎ de xiàoguǒ hěn hǎo.", "ex_en": "This method works very well."},
+    {"zh": "否則", "py": "fǒuzé", "en": "otherwise", "ex_zh": "快一點，否則會趕不上車。", "ex_py": "Kuài yìdiǎn, fǒuzé huì gǎn bú shàng chē.", "ex_en": "Hurry up, otherwise we'll miss the train."}
   ],
   [
-    {"zh":"量子","py":"liàngzǐ","en":"quantum","ex_zh":"量子電腦可能改變密碼學。","ex_py":"Liàngzǐ diànnǎo kěnéng gǎibiàn mìmǎxué.","ex_en":"Quantum computers may change cryptography."},
-    {"zh":"人工智慧","py":"réngōng zhìhuì","en":"artificial intelligence (Taiwan usage)","ex_zh":"人工智慧正在改變很多行業。","ex_py":"Réngōng zhìhuì zhèngzài gǎibiàn hěn duō hángyè.","ex_en":"AI is changing many industries."},
-    {"zh":"研究","py":"yánjiū","en":"research, to study","ex_zh":"我想多讀一些研究論文。","ex_py":"Wǒ xiǎng duō dú yìxiē yánjiū lùnwén.","ex_en":"I'd like to read more research papers."}
+    {"zh": "假裝", "py": "jiǎzhuāng", "en": "to pretend", "ex_zh": "他假裝沒有聽到我說的話。", "ex_py": "Tā jiǎzhuāng méiyǒu tīngdào wǒ shuō de huà.", "ex_en": "He pretended not to hear what I said."},
+    {"zh": "感動", "py": "gǎndòng", "en": "moved, touched", "ex_zh": "這部電影讓我很感動。", "ex_py": "Zhè bù diànyǐng ràng wǒ hěn gǎndòng.", "ex_en": "This movie moved me a lot."},
+    {"zh": "至少", "py": "zhìshǎo", "en": "at least", "ex_zh": "這段路至少要走三個小時。", "ex_py": "Zhè duàn lù zhìshǎo yào zǒu sān ge xiǎoshí.", "ex_en": "This stretch takes at least three hours on foot."}
   ],
   [
-    {"zh":"預算","py":"yùsuàn","en":"budget","ex_zh":"我每個月都有固定的預算。","ex_py":"Wǒ měi ge yuè dōu yǒu gùdìng de yùsuàn.","ex_en":"I have a fixed budget every month."},
-    {"zh":"利息","py":"lìxí","en":"interest (on money)","ex_zh":"這個帳戶的利息很低。","ex_py":"Zhège zhànghù de lìxí hěn dī.","ex_en":"The interest on this account is very low."},
-    {"zh":"當季","py":"dāngjì","en":"in season","ex_zh":"當季的水果比較新鮮，也比較便宜。","ex_py":"Dāngjì de shuǐguǒ bǐjiào xīnxiān, yě bǐjiào piányí.","ex_en":"Seasonal fruit is fresher and also cheaper."}
+    {"zh": "願意", "py": "yuànyì", "en": "willing, to be willing to", "ex_zh": "我很願意幫你。", "ex_py": "Wǒ hěn yuànyì bāng nǐ.", "ex_en": "I'm very willing to help you."},
+    {"zh": "難免", "py": "nánmiǎn", "en": "inevitable, hard to avoid", "ex_zh": "剛開始學難免會犯錯。", "ex_py": "Gāng kāishǐ xué nánmiǎn huì fàn cuò.", "ex_en": "When you're just starting to learn, making mistakes is unavoidable."},
+    {"zh": "整理", "py": "zhěnglǐ", "en": "to tidy up, to organize", "ex_zh": "我週末要整理房間。", "ex_py": "Wǒ zhōumò yào zhěnglǐ fángjiān.", "ex_en": "I'm going to tidy my room this weekend."}
   ],
   [
-    {"zh":"外交","py":"wàijiāo","en":"diplomacy, foreign affairs","ex_zh":"兩國的外交關係越來越緊張。","ex_py":"Liǎng guó de wàijiāo guānxì yuè lái yuè jǐnzhāng.","ex_en":"Diplomatic relations between the two countries are getting more and more tense."},
-    {"zh":"政府","py":"zhèngfǔ","en":"government","ex_zh":"政府宣布了新的政策。","ex_py":"Zhèngfǔ xuānbù le xīn de zhèngcè.","ex_en":"The government announced a new policy."},
-    {"zh":"目標","py":"mùbiāo","en":"goal","ex_zh":"我今年的目標是每天早上七點起床。","ex_py":"Wǒ jīnnián de mùbiāo shì měi tiān zǎoshang qī diǎn qǐchuáng.","ex_en":"My goal this year is to wake up at seven every morning."}
+    {"zh": "勇敢", "py": "yǒnggǎn", "en": "brave", "ex_zh": "她很勇敢地說出了自己的想法。", "ex_py": "Tā hěn yǒnggǎn de shuō chū le zìjǐ de xiǎngfǎ.", "ex_en": "She bravely spoke out her thoughts."},
+    {"zh": "結果", "py": "jiéguǒ", "en": "result; as it turned out", "ex_zh": "我等了很久，結果他沒有來。", "ex_py": "Wǒ děng le hěn jiǔ, jiéguǒ tā méiyǒu lái.", "ex_en": "I waited a long time, and in the end he didn't come."},
+    {"zh": "發現", "py": "fāxiàn", "en": "to discover, to realize", "ex_zh": "我發現手機不見了。", "ex_py": "Wǒ fāxiàn shǒujī bú jiàn le.", "ex_en": "I realized my phone was missing."}
+  ],
+  [
+    {"zh": "擔心", "py": "dānxīn", "en": "to worry", "ex_zh": "不用擔心，一切都會好的。", "ex_py": "Bú yòng dānxīn, yíqiè dōu huì hǎo de.", "ex_en": "Don't worry, everything will be fine."},
+    {"zh": "熟悉", "py": "shúxī", "en": "familiar with", "ex_zh": "我對這個城市還不太熟悉。", "ex_py": "Wǒ duì zhège chéngshì hái bú tài shúxī.", "ex_en": "I'm not very familiar with this city yet."},
+    {"zh": "順便", "py": "shùnbiàn", "en": "while you're at it, on the way", "ex_zh": "你出門的時候，順便幫我買杯咖啡。", "ex_py": "Nǐ chūmén de shíhou, shùnbiàn bāng wǒ mǎi bēi kāfēi.", "ex_en": "When you go out, pick up a coffee for me while you're at it."}
+  ],
+  [
+    {"zh": "增加", "py": "zēngjiā", "en": "to increase", "ex_zh": "最近下雨的天數增加了。", "ex_py": "Zuìjìn xiàyǔ de tiānshù zēngjiā le.", "ex_en": "The number of rainy days has increased recently."},
+    {"zh": "抱怨", "py": "bàoyuàn", "en": "to complain", "ex_zh": "與其抱怨，不如想辦法解決。", "ex_py": "Yǔqí bàoyuàn, bùrú xiǎng bànfǎ jiějué.", "ex_en": "Rather than complain, it's better to find a way to solve it."},
+    {"zh": "輕鬆", "py": "qīngsōng", "en": "relaxed; easy", "ex_zh": "週末我只想輕鬆地休息。", "ex_py": "Zhōumò wǒ zhǐ xiǎng qīngsōng de xiūxí.", "ex_en": "On weekends I just want to rest and take it easy."}
+  ],
+  [
+    {"zh": "盡量", "py": "jǐnliàng", "en": "as much as possible", "ex_zh": "我會盡量準時到。", "ex_py": "Wǒ huì jǐnliàng zhǔnshí dào.", "ex_en": "I'll try to arrive on time as far as I can."},
+    {"zh": "誤會", "py": "wùhuì", "en": "misunderstanding", "ex_zh": "這只是一個小誤會。", "ex_py": "Zhè zhǐshì yí ge xiǎo wùhuì.", "ex_en": "This is just a small misunderstanding."},
+    {"zh": "退貨", "py": "tuìhuò", "en": "to return goods", "ex_zh": "這件衣服太小了，我想退貨。", "ex_py": "Zhè jiàn yīfú tài xiǎo le, wǒ xiǎng tuìhuò.", "ex_en": "This piece of clothing is too small, I'd like to return it."}
+  ],
+  [
+    {"zh": "難得", "py": "nándé", "en": "rare, hard to come by", "ex_zh": "難得有機會見面。", "ex_py": "Nándé yǒu jīhuì jiànmiàn.", "ex_en": "It's rare to have a chance to meet."},
+    {"zh": "邀請", "py": "yāoqǐng", "en": "to invite", "ex_zh": "謝謝你邀請我參加生日派對。", "ex_py": "Xièxie nǐ yāoqǐng wǒ cānjiā shēngrì pàiduì.", "ex_en": "Thank you for inviting me to the birthday party."},
+    {"zh": "準備", "py": "zhǔnbèi", "en": "to prepare", "ex_zh": "我正在準備明天的考試。", "ex_py": "Wǒ zhèngzài zhǔnbèi míngtiān de kǎoshì.", "ex_en": "I'm preparing for tomorrow's exam."}
+  ],
+  [
+    {"zh": "反而", "py": "fǎn'ér", "en": "on the contrary, instead", "ex_zh": "我想幫忙，結果反而讓事情更複雜。", "ex_py": "Wǒ xiǎng bāngmáng, jiéguǒ fǎn'ér ràng shìqing gèng fùzá.", "ex_en": "I wanted to help, but it ended up making things more complicated."},
+    {"zh": "隨便", "py": "suíbiàn", "en": "casual; whatever, anything", "ex_zh": "你想吃什麼？隨便都可以。", "ex_py": "Nǐ xiǎng chī shénme? Suíbiàn dōu kěyǐ.", "ex_en": "What do you want to eat? Anything is fine."},
+    {"zh": "影響", "py": "yǐngxiǎng", "en": "to affect, influence", "ex_zh": "天氣會影響我的心情。", "ex_py": "Tiānqì huì yǐngxiǎng wǒ de xīnqíng.", "ex_en": "The weather affects my mood."}
+  ],
+  [
+    {"zh": "堅持", "py": "jiānchí", "en": "to insist, to persist", "ex_zh": "他堅持自己的看法，不肯讓步。", "ex_py": "Tā jiānchí zìjǐ de kànfǎ, bù kěn ràngbù.", "ex_en": "He insisted on his own view and wouldn't give way."},
+    {"zh": "負責", "py": "fùzé", "en": "to be responsible for", "ex_zh": "這件事由我負責。", "ex_py": "Zhè jiàn shì yóu wǒ fùzé.", "ex_en": "I'm responsible for this matter."},
+    {"zh": "興奮", "py": "xīngfèn", "en": "excited", "ex_zh": "想到明天的旅行，我就很興奮。", "ex_py": "Xiǎngdào míngtiān de lǚxíng, wǒ jiù hěn xīngfèn.", "ex_en": "Thinking about tomorrow's trip makes me really excited."}
+  ],
+  [
+    {"zh": "重視", "py": "zhòngshì", "en": "to value, to take seriously", "ex_zh": "老師很重視學生的意見。", "ex_py": "Lǎoshī hěn zhòngshì xuéshēng de yìjiàn.", "ex_en": "The teacher values the students' opinions."},
+    {"zh": "稍微", "py": "shāowēi", "en": "slightly, a little", "ex_zh": "請稍微等一下。", "ex_py": "Qǐng shāowēi děng yíxià.", "ex_en": "Please wait a moment."},
+    {"zh": "後悔", "py": "hòuhuǐ", "en": "to regret", "ex_zh": "我一點也不後悔這個決定。", "ex_py": "Wǒ yìdiǎn yě bù hòuhuǐ zhège juédìng.", "ex_en": "I don't regret this decision at all."}
+  ],
+  [
+    {"zh": "值得", "py": "zhídé", "en": "to be worth", "ex_zh": "這家餐廳很值得一試。", "ex_py": "Zhè jiā cāntīng hěn zhídé yí shì.", "ex_en": "This restaurant is well worth a try."},
+    {"zh": "勉強", "py": "miǎnqiǎng", "en": "barely; to force oneself", "ex_zh": "我勉強趕上了最後一班車。", "ex_py": "Wǒ miǎnqiǎng gǎn shàng le zuìhòu yì bān chē.", "ex_en": "I only just caught the last train."},
+    {"zh": "習俗", "py": "xísú", "en": "custom, tradition", "ex_zh": "每個地方的習俗都不一樣。", "ex_py": "Měi ge dìfāng de xísú dōu bù yíyàng.", "ex_en": "Every place has different customs."}
+  ],
+  [
+    {"zh": "其次", "py": "qícì", "en": "secondly, next", "ex_zh": "首先要準時，其次要有禮貌。", "ex_py": "Shǒuxiān yào zhǔnshí, qícì yào yǒu lǐmào.", "ex_en": "First be on time, second be polite."},
+    {"zh": "尊重", "py": "zūnzhòng", "en": "to respect", "ex_zh": "我們應該尊重不同的意見。", "ex_py": "Wǒmen yīnggāi zūnzhòng bùtóng de yìjiàn.", "ex_en": "We should respect different opinions."},
+    {"zh": "逛", "py": "guàng", "en": "to stroll, to browse", "ex_zh": "週末我喜歡去書店逛逛。", "ex_py": "Zhōumò wǒ xǐhuān qù shūdiàn guàngguang.", "ex_en": "On weekends I like to browse around bookstores."}
+  ],
+  [
+    {"zh": "沿著", "py": "yánzhe", "en": "along", "ex_zh": "我們沿著河邊散步。", "ex_py": "Wǒmen yánzhe hébiān sànbù.", "ex_en": "We took a walk along the riverside."},
+    {"zh": "景色", "py": "jǐngsè", "en": "scenery, view", "ex_zh": "山上的景色真美。", "ex_py": "Shān shàng de jǐngsè zhēn měi.", "ex_en": "The scenery on the mountain is really beautiful."},
+    {"zh": "出發", "py": "chūfā", "en": "to set off", "ex_zh": "我們明天早上八點出發。", "ex_py": "Wǒmen míngtiān zǎoshang bā diǎn chūfā.", "ex_en": "We set off at eight tomorrow morning."}
+  ],
+  [
+    {"zh": "剛好", "py": "gānghǎo", "en": "just right; happens to", "ex_zh": "我剛好有空，可以陪你去。", "ex_py": "Wǒ gānghǎo yǒu kòng, kěyǐ péi nǐ qù.", "ex_en": "I happen to be free, so I can go with you."},
+    {"zh": "約", "py": "yuē", "en": "to arrange to meet", "ex_zh": "我們約在車站見面吧。", "ex_py": "Wǒmen yuē zài chēzhàn jiànmiàn ba.", "ex_en": "Let's arrange to meet at the station."},
+    {"zh": "臨時", "py": "línshí", "en": "at the last minute", "ex_zh": "臨時有事，我不能去了。", "ex_py": "Línshí yǒu shì, wǒ bù néng qù le.", "ex_en": "Something came up at the last minute, so I can't go."}
+  ],
+  [
+    {"zh": "差不多", "py": "chàbuduō", "en": "almost the same, about", "ex_zh": "這兩個字的意思差不多。", "ex_py": "Zhè liǎng ge zì de yìsi chàbuduō.", "ex_en": "These two characters have about the same meaning."},
+    {"zh": "區別", "py": "qūbié", "en": "difference", "ex_zh": "你知道它們的區別嗎？", "ex_py": "Nǐ zhīdào tāmen de qūbié ma?", "ex_en": "Do you know the difference between them?"},
+    {"zh": "解釋", "py": "jiěshì", "en": "to explain", "ex_zh": "可以請你再解釋一次嗎？", "ex_py": "Kěyǐ qǐng nǐ zài jiěshì yí cì ma?", "ex_en": "Could you explain it once more?"}
+  ],
+  [
+    {"zh": "沒想到", "py": "méi xiǎngdào", "en": "didn't expect", "ex_zh": "沒想到這麼快就下雨了。", "ex_py": "Méi xiǎngdào zhème kuài jiù xiàyǔ le.", "ex_en": "I didn't expect it to rain so soon."},
+    {"zh": "幸好", "py": "xìnghǎo", "en": "luckily, fortunately", "ex_zh": "幸好我帶了傘。", "ex_py": "Xìnghǎo wǒ dài le sǎn.", "ex_en": "Luckily I brought an umbrella."},
+    {"zh": "躲", "py": "duǒ", "en": "to hide, to shelter", "ex_zh": "我們先找個地方躲雨吧。", "ex_py": "Wǒmen xiān zhǎo ge dìfāng duǒ yǔ ba.", "ex_en": "Let's find somewhere to shelter from the rain first."}
+  ],
+  [
+    {"zh": "理由", "py": "lǐyóu", "en": "reason", "ex_zh": "你有什麼理由不去？", "ex_py": "Nǐ yǒu shénme lǐyóu bú qù?", "ex_en": "What reason do you have for not going?"},
+    {"zh": "承認", "py": "chéngrèn", "en": "to admit", "ex_zh": "他承認自己做錯了。", "ex_py": "Tā chéngrèn zìjǐ zuò cuò le.", "ex_en": "He admitted that he had done wrong."},
+    {"zh": "原諒", "py": "yuánliàng", "en": "to forgive", "ex_zh": "請原諒我來晚了。", "ex_py": "Qǐng yuánliàng wǒ lái wǎn le.", "ex_en": "Please forgive me for being late."}
+  ],
+  [
+    {"zh": "經驗", "py": "jīngyàn", "en": "experience", "ex_zh": "這是一次很特別的經驗。", "ex_py": "Zhè shì yí cì hěn tèbié de jīngyàn.", "ex_en": "This was a very special experience."},
+    {"zh": "機會", "py": "jīhuì", "en": "opportunity, chance", "ex_zh": "我不想錯過這個機會。", "ex_py": "Wǒ bù xiǎng cuòguò zhège jīhuì.", "ex_en": "I don't want to miss this opportunity."},
+    {"zh": "珍惜", "py": "zhēnxí", "en": "to cherish", "ex_zh": "我們要珍惜和朋友相處的時間。", "ex_py": "Wǒmen yào zhēnxí hé péngyǒu xiāngchǔ de shíjiān.", "ex_en": "We should cherish the time we spend with friends."}
+  ],
+  [
+    {"zh": "偶爾", "py": "ǒu'ěr", "en": "occasionally", "ex_zh": "我偶爾會自己做飯。", "ex_py": "Wǒ ǒu'ěr huì zìjǐ zuòfàn.", "ex_en": "I occasionally cook for myself."},
+    {"zh": "通常", "py": "tōngcháng", "en": "usually", "ex_zh": "週末我通常睡到很晚。", "ex_py": "Zhōumò wǒ tōngcháng shuì dào hěn wǎn.", "ex_en": "On weekends I usually sleep in late."},
+    {"zh": "難怪", "py": "nánguài", "en": "no wonder", "ex_zh": "難怪他這麼累，他昨天沒睡。", "ex_py": "Nánguài tā zhème lèi, tā zuótiān méi shuì.", "ex_en": "No wonder he's so tired; he didn't sleep yesterday."}
+  ],
+  [
+    {"zh": "乾脆", "py": "gāncuì", "en": "simply, might as well", "ex_zh": "太遠了，乾脆搭計程車吧。", "ex_py": "Tài yuǎn le, gāncuì dā jìchéngchē ba.", "ex_en": "It's too far, let's just take a taxi."},
+    {"zh": "順利", "py": "shùnlì", "en": "smoothly, without a hitch", "ex_zh": "一切都很順利。", "ex_py": "Yíqiè dōu hěn shùnlì.", "ex_en": "Everything went smoothly."},
+    {"zh": "恭喜", "py": "gōngxǐ", "en": "congratulations", "ex_zh": "恭喜你通過考試！", "ex_py": "Gōngxǐ nǐ tōngguò kǎoshì!", "ex_en": "Congratulations on passing the exam!"}
+  ],
+  [
+    {"zh": "態度", "py": "tàidù", "en": "attitude", "ex_zh": "他的態度很友善。", "ex_py": "Tā de tàidù hěn yǒushàn.", "ex_en": "His attitude is very friendly."},
+    {"zh": "誠實", "py": "chéngshí", "en": "honest", "ex_zh": "我喜歡誠實的人。", "ex_py": "Wǒ xǐhuān chéngshí de rén.", "ex_en": "I like honest people."},
+    {"zh": "缺點", "py": "quēdiǎn", "en": "shortcoming, flaw", "ex_zh": "每個人都有自己的缺點。", "ex_py": "Měi ge rén dōu yǒu zìjǐ de quēdiǎn.", "ex_en": "Everyone has their own shortcomings."}
+  ],
+  [
+    {"zh": "熱鬧", "py": "rènao", "en": "lively, bustling", "ex_zh": "過年的時候，街上特別熱鬧。", "ex_py": "Guònián de shíhou, jiē shàng tèbié rènao.", "ex_en": "At New Year, the streets are especially lively."},
+    {"zh": "傳統", "py": "chuántǒng", "en": "tradition", "ex_zh": "這是一個很古老的傳統。", "ex_py": "Zhè shì yí ge hěn gǔlǎo de chuántǒng.", "ex_en": "This is a very old tradition."},
+    {"zh": "氣氛", "py": "qìfēn", "en": "atmosphere", "ex_zh": "這間餐廳的氣氛很舒服。", "ex_py": "Zhè jiān cāntīng de qìfēn hěn shūfu.", "ex_en": "This restaurant has a comfortable atmosphere."}
+  ],
+  [
+    {"zh": "專心", "py": "zhuānxīn", "en": "focused, to concentrate", "ex_zh": "我在圖書館比較容易專心。", "ex_py": "Wǒ zài túshūguǎn bǐjiào róngyì zhuānxīn.", "ex_en": "I find it easier to concentrate in the library."},
+    {"zh": "分心", "py": "fēnxīn", "en": "distracted", "ex_zh": "手機常常讓我分心。", "ex_py": "Shǒujī chángcháng ràng wǒ fēnxīn.", "ex_en": "My phone often distracts me."},
+    {"zh": "效率", "py": "xiàolǜ", "en": "efficiency", "ex_zh": "休息一下，效率反而會更高。", "ex_py": "Xiūxí yíxià, xiàolǜ fǎn'ér huì gèng gāo.", "ex_en": "Taking a short break actually makes you more efficient."}
+  ],
+  [
+    {"zh": "保持", "py": "bǎochí", "en": "to maintain, to keep", "ex_zh": "請保持安靜。", "ex_py": "Qǐng bǎochí ānjìng.", "ex_en": "Please keep quiet."},
+    {"zh": "聯絡", "py": "liánluò", "en": "to contact", "ex_zh": "到了以後請跟我聯絡。", "ex_py": "Dào le yǐhòu qǐng gēn wǒ liánluò.", "ex_en": "Please contact me once you arrive."},
+    {"zh": "決定", "py": "juédìng", "en": "to decide; decision", "ex_zh": "我們還沒有決定要去哪裡。", "ex_py": "Wǒmen hái méiyǒu juédìng yào qù nǎlǐ.", "ex_en": "We haven't decided where to go yet."}
+  ],
+  [
+    {"zh": "一舉兩得", "py": "yì jǔ liǎng dé", "en": "kill two birds with one stone (idiom)", "ex_zh": "邊走路邊聽課，真是一舉兩得。", "ex_py": "Biān zǒulù biān tīng kè, zhēnshi yì jǔ liǎng dé.", "ex_en": "Listening to a lesson while walking is really killing two birds with one stone."},
+    {"zh": "馬馬虎虎", "py": "mǎmǎhūhū", "en": "so-so; careless (idiom)", "ex_zh": "我的中文馬馬虎虎。", "ex_py": "Wǒ de Zhōngwén mǎmǎhūhū.", "ex_en": "My Chinese is so-so."},
+    {"zh": "順其自然", "py": "shùn qí zìrán", "en": "let things take their course (idiom)", "ex_zh": "有些事不用勉強，順其自然就好。", "ex_py": "Yǒuxiē shì búyòng miǎnqiǎng, shùn qí zìrán jiù hǎo.", "ex_en": "Some things needn't be forced; just let them take their course."}
+  ],
+  [
+    {"zh": "入境隨俗", "py": "rù jìng suí sú", "en": "when in Rome, do as the Romans do (idiom)", "ex_zh": "到了新的地方，要入境隨俗。", "ex_py": "Dào le xīn de dìfāng, yào rù jìng suí sú.", "ex_en": "When you arrive in a new place, do as the locals do."},
+    {"zh": "事半功倍", "py": "shì bàn gōng bèi", "en": "half the effort, double the result (idiom)", "ex_zh": "用對方法就能事半功倍。", "ex_py": "Yòng duì fāngfǎ jiù néng shì bàn gōng bèi.", "ex_en": "With the right method you get twice the result for half the effort."},
+    {"zh": "熟能生巧", "py": "shú néng shēng qiǎo", "en": "practice makes perfect (idiom)", "ex_zh": "語言是熟能生巧的。", "ex_py": "Yǔyán shì shú néng shēng qiǎo de.", "ex_en": "With language, practice makes perfect."}
   ]
 ]
