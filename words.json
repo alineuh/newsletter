@@ -1,0 +1,37 @@
+[
+  [
+    {"zh":"股票","py":"gǔpiào","en":"stock, share","ex_zh":"我最近開始研究股票市場。","ex_py":"Wǒ zuìjìn kāishǐ yánjiū gǔpiào shìchǎng.","ex_en":"I recently started studying the stock market."},
+    {"zh":"風險","py":"fēngxiǎn","en":"risk","ex_zh":"投資一定有風險。","ex_py":"Tóuzī yídìng yǒu fēngxiǎn.","ex_en":"Investing always involves risk."},
+    {"zh":"習慣","py":"xíguàn","en":"habit","ex_zh":"早起是一個好習慣。","ex_py":"Zǎoqǐ shì yí ge hǎo xíguàn.","ex_en":"Waking up early is a good habit."}
+  ],
+  [
+    {"zh":"通貨膨脹","py":"tōnghuò péngzhàng","en":"inflation","ex_zh":"通貨膨脹讓東西越來越貴。","ex_py":"Tōnghuò péngzhàng ràng dōngxi yuè lái yuè guì.","ex_en":"Inflation makes things more and more expensive."},
+    {"zh":"趨勢","py":"qūshì","en":"trend","ex_zh":"這個產業的趨勢很明顯。","ex_py":"Zhège chǎnyè de qūshì hěn míngxiǎn.","ex_en":"The trend in this industry is very clear."},
+    {"zh":"蔬菜","py":"shūcài","en":"vegetables","ex_zh":"我現在多吃蔬菜，少吃肉。","ex_py":"Wǒ xiànzài duō chī shūcài, shǎo chī ròu.","ex_en":"I now eat more vegetables and less meat."}
+  ],
+  [
+    {"zh":"資訊","py":"zīxùn","en":"information (Taiwan usage; mainland: 信息)","ex_zh":"資訊安全越來越重要。","ex_py":"Zīxùn ānquán yuè lái yuè zhòngyào.","ex_en":"Information security is more and more important."},
+    {"zh":"密碼","py":"mìmǎ","en":"password","ex_zh":"請不要把密碼告訴別人。","ex_py":"Qǐng búyào bǎ mìmǎ gàosù biérén.","ex_en":"Please don't tell anyone your password."},
+    {"zh":"計畫","py":"jìhuà","en":"plan","ex_zh":"我們的計畫是下個月去台灣旅行。","ex_py":"Wǒmen de jìhuà shì xià ge yuè qù Táiwān lǚxíng.","ex_en":"Our plan is to travel to Taiwan next month."}
+  ],
+  [
+    {"zh":"經濟","py":"jīngjì","en":"economy","ex_zh":"今年的經濟成長比去年慢。","ex_py":"Jīnnián de jīngjì chéngzhǎng bǐ qùnián màn.","ex_en":"This year's economic growth is slower than last year's."},
+    {"zh":"選舉","py":"xuǎnjǔ","en":"election","ex_zh":"法國的總統選舉每五年舉行一次。","ex_py":"Fǎguó de zǒngtǒng xuǎnjǔ měi wǔ nián jǔxíng yí cì.","ex_en":"The French presidential election is held every five years."},
+    {"zh":"睡眠","py":"shuìmián","en":"sleep","ex_zh":"睡眠不足會影響工作。","ex_py":"Shuìmián bùzú huì yǐngxiǎng gōngzuò.","ex_en":"Lack of sleep affects work."}
+  ],
+  [
+    {"zh":"量子","py":"liàngzǐ","en":"quantum","ex_zh":"量子電腦可能改變密碼學。","ex_py":"Liàngzǐ diànnǎo kěnéng gǎibiàn mìmǎxué.","ex_en":"Quantum computers may change cryptography."},
+    {"zh":"人工智慧","py":"réngōng zhìhuì","en":"artificial intelligence (Taiwan usage)","ex_zh":"人工智慧正在改變很多行業。","ex_py":"Réngōng zhìhuì zhèngzài gǎibiàn hěn duō hángyè.","ex_en":"AI is changing many industries."},
+    {"zh":"研究","py":"yánjiū","en":"research, to study","ex_zh":"我想多讀一些研究論文。","ex_py":"Wǒ xiǎng duō dú yìxiē yánjiū lùnwén.","ex_en":"I'd like to read more research papers."}
+  ],
+  [
+    {"zh":"預算","py":"yùsuàn","en":"budget","ex_zh":"我每個月都有固定的預算。","ex_py":"Wǒ měi ge yuè dōu yǒu gùdìng de yùsuàn.","ex_en":"I have a fixed budget every month."},
+    {"zh":"利息","py":"lìxí","en":"interest (on money)","ex_zh":"這個帳戶的利息很低。","ex_py":"Zhège zhànghù de lìxí hěn dī.","ex_en":"The interest on this account is very low."},
+    {"zh":"當季","py":"dāngjì","en":"in season","ex_zh":"當季的水果比較新鮮，也比較便宜。","ex_py":"Dāngjì de shuǐguǒ bǐjiào xīnxiān, yě bǐjiào piányí.","ex_en":"Seasonal fruit is fresher and also cheaper."}
+  ],
+  [
+    {"zh":"外交","py":"wàijiāo","en":"diplomacy, foreign affairs","ex_zh":"兩國的外交關係越來越緊張。","ex_py":"Liǎng guó de wàijiāo guānxì yuè lái yuè jǐnzhāng.","ex_en":"Diplomatic relations between the two countries are getting more and more tense."},
+    {"zh":"政府","py":"zhèngfǔ","en":"government","ex_zh":"政府宣布了新的政策。","ex_py":"Zhèngfǔ xuānbù le xīn de zhèngcè.","ex_en":"The government announced a new policy."},
+    {"zh":"目標","py":"mùbiāo","en":"goal","ex_zh":"我今年的目標是每天早上七點起床。","ex_py":"Wǒ jīnnián de mùbiāo shì měi tiān zǎoshang qī diǎn qǐchuáng.","ex_en":"My goal this year is to wake up at seven every morning."}
+  ]
+]
