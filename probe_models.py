@@ -6,9 +6,12 @@
    status, the time taken, the reply and any rate-limit headers.
 3. Sends bigger and bigger requests to the first model that works, to learn how
    much text one call accepts.
+4. Shows a raw peek (status, content type, redirect target, first characters)
+   of the catalog answer and of the first chat answer, so odd answers can be
+   understood.
 
-The report goes to stdout and to the job summary. The token is never printed.
-Failures are results, not errors: the script always exits normally.
+Redirects are never followed, so the Authorization header can never be forwarded
+to another host. The token is never printed. Failures are results, not errors.
 """
 import json
 import os
@@ -19,6 +22,7 @@ import urllib.request
 BASE = "https://models.github.ai"
 API_VERSION = "2022-11-28"
 TIMEOUT = 90
+MAX_BYTES = 2_000_000
 MAX_TESTS = 4
 PREFERRED = [
     "openai/gpt-4.1-mini",
@@ -30,6 +34,21 @@ PREFERRED = [
     "microsoft/phi-4",
 ]
 SIZES = (12000, 24000, 48000)  # characters of filler text
+
+
+class NoRedirect(urllib.request.HTTPRedirectHandler):
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        return None  # a 3xx surfaces as an error we can report
+
+
+OPENER = urllib.request.build_opener(NoRedirect)
+
+
+def hget(headers, name):
+    for key, value in headers.items():
+        if key.lower() == name.lower():
+            return value
+    return ""
 
 
 def request(method, path, token, body=None):
@@ -45,25 +64,53 @@ def request(method, path, token, body=None):
         },
     )
     try:
-        with urllib.request.urlopen(req, timeout=TIMEOUT) as resp:
-            return resp.status, dict(resp.headers), resp.read().decode("utf-8", "replace")
+        with OPENER.open(req, timeout=TIMEOUT) as resp:
+            return resp.status, dict(resp.headers), resp.read(MAX_BYTES).decode("utf-8", "replace")
     except urllib.error.HTTPError as e:
-        return e.code, dict(e.headers), e.read().decode("utf-8", "replace")
+        return e.code, dict(e.headers), e.read(MAX_BYTES).decode("utf-8", "replace")
     except Exception as e:  # network problems, timeouts
         return 0, {}, type(e).__name__ + ": " + str(e)[:120]
 
 
+def peek(text, n=200):
+    return " ".join(text.split())[:n]
+
+
+def describe_response(status, headers, text):
+    parts = [f"HTTP {status}"]
+    content_type = hget(headers, "content-type")
+    if content_type:
+        parts.append("type: " + content_type)
+    location = hget(headers, "location")
+    if location:
+        parts.append("redirects to: " + location)
+    parts.append("body: " + (peek(text) or "(empty)"))
+    return " | ".join(parts)
+
+
+def extract_reply(text):
+    """Return the model's reply text, or None if this is not a chat answer."""
+    try:
+        content = json.loads(text)["choices"][0]["message"]["content"]
+    except Exception:
+        return None
+    if isinstance(content, list):
+        content = "".join(p.get("text", "") for p in content if isinstance(p, dict))
+    return content.strip() if isinstance(content, str) else None
+
+
 def get_catalog(token):
-    status, _, text = request("GET", "/catalog/models", token)
+    status, headers, text = request("GET", "/catalog/models", token)
+    raw = describe_response(status, headers, text)
     if status != 200:
-        return status, [], text[:300]
+        return [], raw
     try:
         data = json.loads(text)
     except ValueError:
-        return status, [], "catalog was not JSON"
+        return [], raw
     if isinstance(data, dict):
         data = data.get("models") or data.get("data") or []
-    return status, data, ""
+    return data if isinstance(data, list) else [], raw
 
 
 def describe(model):
@@ -93,16 +140,13 @@ def try_model(token, model):
     t0 = time.time()
     status, headers, text = request("POST", "/inference/chat/completions", token, body)
     seconds = time.time() - t0
-    if status == 200:
-        try:
-            reply = json.loads(text)["choices"][0]["message"]["content"].strip()[:40]
-        except Exception:
-            reply = "unexpected response shape"
-    else:
-        reply = text[:160].replace("\n", " ")
+    reply = extract_reply(text) if status == 200 else None
+    ok = reply is not None
+    shown = reply[:40] if ok else describe_response(status, headers, text)[:240]
     limits = {k.lower(): v for k, v in headers.items()
               if "ratelimit" in k.lower() or k.lower() == "retry-after"}
-    return status, seconds, reply, limits
+    raw = describe_response(status, headers, text)
+    return ok, status, seconds, shown, limits, raw
 
 
 def size_probe(token, model):
@@ -116,9 +160,10 @@ def size_probe(token, model):
             "max_tokens": 8,
             "temperature": 0,
         }
-        status, _, text = request("POST", "/inference/chat/completions", token, body)
-        results.append((chars, status, "accepted" if status == 200 else text[:140].replace("\n", " ")))
-        if status != 200:
+        status, headers, text = request("POST", "/inference/chat/completions", token, body)
+        ok = status == 200 and extract_reply(text) is not None
+        results.append((chars, status, "accepted, real answer" if ok else describe_response(status, headers, text)[:200]))
+        if not ok:
             break
     return results
 
@@ -140,8 +185,8 @@ def main():
         return
     out = ["## GitHub Models probe", ""]
 
-    status, catalog, error = get_catalog(token)
-    out.append(f"Catalog request: HTTP {status}, {len(catalog)} models. {esc(error)}".strip())
+    catalog, catalog_raw = get_catalog(token)
+    out.append(f"Catalog: {len(catalog)} models listed.")
     out.append("")
     rows = [describe(m) for m in catalog]
     if rows:
@@ -150,15 +195,17 @@ def main():
         out.append("")
 
     candidates = pick_candidates([r["id"] for r in rows]) if rows else PREFERRED[:3]
-    test_rows, first_ok = [], None
+    test_rows, first_ok, first_raw = [], None, ""
     for model in candidates:
-        status, seconds, reply, limits = try_model(token, model)
-        if status == 200 and first_ok is None:
+        ok, status, seconds, shown, limits, raw = try_model(token, model)
+        if not first_raw:
+            first_raw = raw
+        if ok and first_ok is None:
             first_ok = model
-        test_rows.append([model, status, f"{seconds:.1f}s", reply, json.dumps(limits)])
+        test_rows.append([model, "yes" if ok else "NO", status, f"{seconds:.1f}s", shown, json.dumps(limits)])
     out.append("### Tiny test call per model")
     out.append("")
-    out.append(table(["Model", "HTTP", "Time", "Reply or error", "Rate-limit headers"], test_rows))
+    out.append(table(["Model", "Real answer", "HTTP", "Time", "Reply or what came back", "Rate-limit headers"], test_rows))
     out.append("")
 
     if first_ok:
@@ -168,8 +215,15 @@ def main():
                          [[c, s, r] for c, s, r in size_probe(token, first_ok)]))
         out.append("")
     else:
-        out.append("No model answered a tiny test call, so the size probe was skipped.")
+        out.append("No model gave a real answer, so the size probe was skipped.")
         out.append("")
+
+    out.append("### Raw peek")
+    out.append("")
+    out.append("Catalog answer: " + esc(catalog_raw))
+    out.append("")
+    out.append("First chat answer: " + esc(first_raw))
+    out.append("")
 
     report = "\n".join(out)
     print(report)
