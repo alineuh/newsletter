@@ -1,0 +1,15 @@
+name: check-feeds
+
+on:
+  workflow_dispatch:   # manual run only
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test every candidate feed
+        run: python3 check_feeds.py

@@ -1,0 +1,45 @@
+[
+  {"topic": "French press and politics", "name": "Le Monde (front page)", "url": "https://www.lemonde.fr/rss/une.xml", "access": "headlines-only", "status": "yours"},
+  {"topic": "French press and politics", "name": "Le Monde (international)", "url": "https://www.lemonde.fr/international/rss_full.xml", "access": "headlines-only", "status": "yours"},
+  {"topic": "French press and politics", "name": "Les Echos (front page)", "url": "https://www.lesechos.fr/rss/rss_une.xml", "access": "headlines-only", "status": "yours"},
+  {"topic": "French press and politics", "name": "Mediapart", "url": "https://www.mediapart.fr/articles/feed", "access": "headlines-only", "status": "yours"},
+  {"topic": "French press and politics", "name": "franceinfo", "url": "https://www.francetvinfo.fr/titres.rss", "access": "open", "status": "suggested"},
+  {"topic": "French press and politics", "name": "Le Figaro", "url": "https://www.lefigaro.fr/rss/figaro_actualites.xml", "access": "headlines-only", "status": "suggested"},
+
+  {"topic": "Markets and investing", "name": "Investing.com news", "url": "https://www.investing.com/rss/news.rss", "access": "open", "status": "yours"},
+  {"topic": "Markets and investing", "name": "Bloomberg markets", "url": "https://feeds.bloomberg.com/markets/news.rss", "access": "headlines-only", "status": "yours"},
+  {"topic": "Markets and investing", "name": "WSJ markets", "url": "https://feeds.content.dowjones.io/public/rss/RSSMarketsMain", "access": "headlines-only", "status": "yours"},
+  {"topic": "Markets and investing", "name": "MarketWatch top stories", "url": "https://feeds.content.dowjones.io/public/rss/mw_topstories", "access": "open", "status": "yours"},
+  {"topic": "Markets and investing", "name": "The Economist (finance)", "url": "https://www.economist.com/finance-and-economics/rss.xml", "access": "headlines-only", "status": "yours"},
+  {"topic": "Markets and investing", "name": "Financial Times", "url": "https://www.ft.com/rss/home", "access": "headlines-only", "status": "yours"},
+  {"topic": "Markets and investing", "name": "Forbes (investing)", "url": "https://www.forbes.com/investing/feed/", "access": "open", "status": "yours"},
+
+  {"topic": "Tech, AI, quantum", "name": "TechCrunch", "url": "https://techcrunch.com/feed/", "access": "open", "status": "yours"},
+  {"topic": "Tech, AI, quantum", "name": "Ars Technica", "url": "https://feeds.arstechnica.com/arstechnica/index", "access": "open", "status": "yours"},
+  {"topic": "Tech, AI, quantum", "name": "MIT Technology Review", "url": "https://www.technologyreview.com/feed/", "access": "headlines-only", "status": "yours"},
+  {"topic": "Tech, AI, quantum", "name": "Wired", "url": "https://www.wired.com/feed/rss", "access": "headlines-only", "status": "yours"},
+  {"topic": "Tech, AI, quantum", "name": "Quanta Magazine", "url": "https://www.quantamagazine.org/feed/", "access": "open", "status": "suggested"},
+
+  {"topic": "Research papers", "name": "arXiv quant-ph", "url": "https://rss.arxiv.org/rss/quant-ph", "access": "open", "status": "suggested"},
+  {"topic": "Research papers", "name": "arXiv cs.AI", "url": "https://rss.arxiv.org/rss/cs.AI", "access": "open", "status": "suggested"},
+  {"topic": "Research papers", "name": "arXiv cs.CR", "url": "https://rss.arxiv.org/rss/cs.CR", "access": "open", "status": "approved"},
+
+  {"topic": "Cybersecurity and GRC", "name": "CERT-FR", "url": "https://www.cert.ssi.gouv.fr/feed/", "access": "open", "status": "approved"},
+  {"topic": "Cybersecurity and GRC", "name": "ENISA", "url": null, "access": "open", "status": "approved"},
+  {"topic": "Cybersecurity and GRC", "name": "CISA advisories", "url": "https://www.cisa.gov/cybersecurity-advisories/all.xml", "access": "open", "status": "approved"},
+  {"topic": "Cybersecurity and GRC", "name": "SANS Internet Storm Center", "url": "https://isc.sans.edu/rssfeed.xml", "access": "open", "status": "approved"},
+  {"topic": "Cybersecurity and GRC", "name": "BleepingComputer", "url": "https://www.bleepingcomputer.com/feed/", "access": "open", "status": "approved"},
+  {"topic": "Cybersecurity and GRC", "name": "The Hacker News", "url": "https://feeds.feedburner.com/TheHackersNews", "access": "open", "status": "approved"},
+  {"topic": "Cybersecurity and GRC", "name": "Krebs on Security", "url": "https://krebsonsecurity.com/feed/", "access": "open", "status": "approved"},
+  {"topic": "Cybersecurity and GRC", "name": "Schneier on Security", "url": "https://www.schneier.com/feed/atom/", "access": "open", "status": "approved"},
+  {"topic": "Cybersecurity and GRC", "name": "Dark Reading", "url": "https://www.darkreading.com/rss.xml", "access": "open", "status": "approved"},
+  {"topic": "Cybersecurity and GRC", "name": "NIST news (post-quantum)", "url": "https://www.nist.gov/news-events/news/rss.xml", "access": "open", "status": "approved"},
+  {"topic": "Cybersecurity and GRC", "name": "DORA and NIS2 news", "url": null, "access": "open", "status": "approved"},
+
+  {"topic": "Taiwan and China", "name": "Focus Taiwan (CNA)", "url": "https://focustaiwan.tw/rss", "access": "open", "status": "suggested"},
+  {"topic": "Taiwan and China", "name": "Taipei Times", "url": "https://www.taipeitimes.com/xml/index.rss", "access": "open", "status": "suggested"},
+
+  {"topic": "YouTube", "name": "Finary", "url": null, "access": "open", "status": "yours"},
+  {"topic": "YouTube", "name": "Matthieu Louvet", "url": null, "access": "open", "status": "yours"},
+  {"topic": "YouTube", "name": "Hugo Decrypte", "url": null, "access": "open", "status": "yours"}
+]
