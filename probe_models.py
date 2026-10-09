@@ -10,14 +10,22 @@
    of the catalog answer and of the first chat answer, so odd answers can be
    understood.
 
+5. Runs a diagnosis (DNS and TLS of the host, header variants, a plain curl) so
+   that an odd answer can be traced to its source.
+
 Redirects are never followed, so the Authorization header can never be forwarded
 to another host. The token is never printed. Failures are results, not errors.
 """
 import json
 import os
+import shutil
+import socket
+import ssl
+import subprocess
 import time
 import urllib.error
 import urllib.request
+from urllib.parse import urlparse
 
 BASE = "https://models.github.ai"
 API_VERSION = "2022-11-28"
@@ -51,18 +59,18 @@ def hget(headers, name):
     return ""
 
 
-def request(method, path, token, body=None):
+def request(method, path, token, body=None, version=API_VERSION):
     data = json.dumps(body).encode() if body is not None else None
-    req = urllib.request.Request(
-        BASE + path, data=data, method=method,
-        headers={
-            "Authorization": f"Bearer {token}",
-            "Accept": "application/vnd.github+json",
-            "X-GitHub-Api-Version": API_VERSION,
-            "Content-Type": "application/json",
-            "User-Agent": "newsletter-probe",
-        },
-    )
+    headers = {
+        "Authorization": f"Bearer {token}",
+        "Accept": "application/vnd.github+json",
+        "Content-Type": "application/json",
+        "User-Agent": "newsletter-probe",
+    }
+    if version:
+        headers["X-GitHub-Api-Version"] = version
+    url = path if path.startswith("https://") else BASE + path
+    req = urllib.request.Request(url, data=data, method=method, headers=headers)
     try:
         with OPENER.open(req, timeout=TIMEOUT) as resp:
             return resp.status, dict(resp.headers), resp.read(MAX_BYTES).decode("utf-8", "replace")
@@ -72,8 +80,20 @@ def request(method, path, token, body=None):
         return 0, {}, type(e).__name__ + ": " + str(e)[:120]
 
 
+TOKEN = ""
+
+
+def scrub(text):
+    """Never let the token appear in a report, even if a server echoes it."""
+    return text.replace(TOKEN, "***") if TOKEN else text
+
+
 def peek(text, n=200):
-    return " ".join(text.split())[:n]
+    return scrub(" ".join(text.split()))[:n]
+
+
+def describe_headers(headers, limit=14):
+    return "; ".join(f"{k}: {str(v)[:50]}" for k, v in list(headers.items())[:limit])
 
 
 def describe_response(status, headers, text):
@@ -168,6 +188,63 @@ def size_probe(token, model):
     return results
 
 
+def run_curl(args):
+    try:
+        res = subprocess.run(["curl", "-sS", "-i", "--max-time", "30", "--max-redirs", "0"] + args,
+                             capture_output=True, text=True, timeout=45)
+        return scrub((res.stdout + res.stderr))[:900]
+    except Exception as e:
+        return "curl failed: " + type(e).__name__
+
+
+def diagnose(token):
+    out = ["### Diagnosis", ""]
+    parsed = urlparse(BASE)
+    if parsed.scheme == "https":
+        try:
+            host = parsed.hostname
+            ip = socket.gethostbyname(host)
+            ctx = ssl.create_default_context()
+            with socket.create_connection((host, 443), timeout=15) as raw:
+                with ctx.wrap_socket(raw, server_hostname=host) as tls:
+                    cert, version = tls.getpeercert(), tls.version()
+            subject = dict(x[0] for x in cert.get("subject", ()))
+            issuer = dict(x[0] for x in cert.get("issuer", ()))
+            out.append(f"DNS and TLS: {host} resolves to {ip}; {version}; certificate for "
+                       f"{subject.get('commonName', '?')}, issued by {issuer.get('organizationName', '?')} "
+                       f"({issuer.get('commonName', '?')}), valid until {cert.get('notAfter', '?')}")
+        except Exception as e:
+            out.append(f"DNS and TLS check failed: {type(e).__name__}: {str(e)[:120]}")
+        out.append("")
+
+    chat_body = {"model": "openai/gpt-4.1-mini",
+                 "messages": [{"role": "user", "content": "Reply with the single word OK."}],
+                 "max_tokens": 16}
+    rows = []
+    for label, version in (("no version header", None), ("2022-11-28", "2022-11-28"), ("2026-03-10", "2026-03-10")):
+        status, headers, text = request("GET", "/catalog/models", token, version=version)
+        rows.append([f"catalog, {label}", status, hget(headers, "content-type"), peek(text, 70), describe_headers(headers)])
+        status, headers, text = request("POST", "/inference/chat/completions", token, chat_body, version=version)
+        rows.append([f"chat, {label}", status, hget(headers, "content-type"), peek(text, 70), describe_headers(headers)])
+    out.append(table(["Request", "HTTP", "Type", "Body", "All response headers"], rows))
+    out.append("")
+
+    status, headers, text = request("GET", "https://api.github.com/rate_limit", token)
+    out.append(f"api.github.com with the same token: HTTP {status}; server: {hget(headers, 'server') or '(none)'}; "
+               f"github request id present: {bool(hget(headers, 'x-github-request-id'))}")
+    out.append("")
+
+    if shutil.which("curl") and parsed.scheme == "https":
+        out.append("Plain curl, catalog:")
+        out.append("")
+        out.append("```")
+        out.append(run_curl(["-H", f"Authorization: Bearer {token}", "-H", "Accept: application/vnd.github+json",
+                             "-H", f"X-GitHub-Api-Version: {API_VERSION}", BASE + "/catalog/models"]))
+        out.append("```")
+        out.append("")
+    return "\n".join(out)
+
+
 def esc(value):
     return str(value).replace("|", "/").replace("\n", " ")
 
@@ -179,10 +256,12 @@ def table(header, rows):
 
 
 def main():
+    global TOKEN
     token = os.environ.get("GITHUB_TOKEN")
     if not token:
         print("GITHUB_TOKEN is not set")
         return
+    TOKEN = token
     out = ["## GitHub Models probe", ""]
 
     catalog, catalog_raw = get_catalog(token)
@@ -224,6 +303,7 @@ def main():
     out.append("")
     out.append("First chat answer: " + esc(first_raw))
     out.append("")
+    out.append(diagnose(token))
 
     report = "\n".join(out)
     print(report)
