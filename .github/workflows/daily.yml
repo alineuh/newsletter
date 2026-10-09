@@ -1,0 +1,23 @@
+name: daily-digest
+
+on:
+  schedule:
+    - cron: "0 4 * * *"   # 06:00 Paris during summer time (UTC+2)
+    - cron: "0 5 * * *"   # 06:00 Paris during winter time (UTC+1)
+  workflow_dispatch:       # manual run, for testing
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and post the digest
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          FORCE: ${{ github.event_name == 'workflow_dispatch' && '1' || '0' }}
+        run: python3 generate.py
