@@ -44,16 +44,36 @@ def parse_date(text):
     return dt.astimezone(timezone.utc)
 
 
+ARXIV_RE = re.compile(r"^\s*arXiv:\S+\s+Announce Type:\s*\w+\s+Abstract:\s*", re.IGNORECASE)
+LEFTOVER_ENTITY_RE = re.compile(r"&#?;?[xX]?[0-9A-Za-z]{0,8};|#;[xX]?[0-9A-Za-z]{1,8};")
+
+
+def unescape_fully(text):
+    """Some feeds encode entities two or three times (&amp;#x26;#39;). Decode until stable."""
+    for _ in range(4):
+        decoded = html.unescape(text)
+        if decoded == text:
+            break
+        text = decoded
+    return text.replace("\u00c2\u00a0", " ").replace("\u00a0", " ")
+
+
 def clean_text(text, limit=200):
     """Plain, harmless text: no HTML, URLs, markdown, mentions or issue references."""
-    text = html.unescape(TAG_RE.sub(" ", text or ""))
+    text = unescape_fully(TAG_RE.sub(" ", text or ""))
+    text = TAG_RE.sub(" ", text)  # tags that only appeared after decoding
+    text = ARXIV_RE.sub("", text)
+    text = LEFTOVER_ENTITY_RE.sub(" ", text)
     text = URL_RE.sub(" ", text)
     text = SCHEME_RE.sub(" ", text)
     text = MD_RE.sub(" ", text)
     text = " ".join(text.split())
     text = text.replace("@", "@" + ZWSP)
     text = re.sub(r"#(?=\d)", "#" + ZWSP, text)
-    return text[:limit].rstrip()
+    if len(text) > limit:
+        cut = text[:limit]
+        text = (cut.rsplit(" ", 1)[0] if " " in cut else cut).rstrip(" ,;:-") + "\u2026"
+    return text.rstrip()
 
 
 def safe_link(url):

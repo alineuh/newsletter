@@ -1,28 +1,35 @@
 {
   "window_hours": 48,
   "groups": [
-    {"title": "Alerts and vulnerabilities", "feeds": [
-      {"name": "CERT-FR", "url": "https://www.cert.ssi.gouv.fr/feed/", "max": 6},
-      {"name": "CISA advisories", "url": "https://www.cisa.gov/cybersecurity-advisories/all.xml", "max": 5},
-      {"name": "SANS Internet Storm Center", "url": "https://isc.sans.edu/rssfeed.xml", "max": 2}
+    {"title": "Alertes et vulnérabilités", "feeds": [
+      {"name": "CERT-FR alertes", "url": "https://www.cert.ssi.gouv.fr/alerte/feed/", "max": 3, "lang": "fr"},
+      {"name": "CERT-FR menaces et incidents", "url": "https://www.cert.ssi.gouv.fr/cti/feed/", "max": 2, "lang": "fr"},
+      {"name": "CERT-FR bulletin d'actualité", "url": "https://www.cert.ssi.gouv.fr/actualite/feed/", "max": 1, "lang": "fr"},
+      {"name": "CERT-FR avis", "url": "https://www.cert.ssi.gouv.fr/avis/feed/", "max": 3, "lang": "fr"},
+      {"name": "SANS Internet Storm Center", "url": "https://isc.sans.edu/rssfeed.xml", "max": 2, "lang": "en"}
     ]},
-    {"title": "Industry news", "feeds": [
-      {"name": "BleepingComputer", "url": "https://www.bleepingcomputer.com/feed/", "max": 5},
-      {"name": "The Hacker News", "url": "https://feeds.feedburner.com/TheHackersNews", "max": 5},
-      {"name": "Dark Reading", "url": "https://www.darkreading.com/rss.xml", "max": 4}
+    {"title": "Actualités cyber en français", "feeds": [
+      {"name": "ANSSI", "url": "https://cyber.gouv.fr/actualites/rss/", "max": 3, "lang": "fr"},
+      {"name": "IT-Connect", "url": "https://www.it-connect.fr/actualites/actu-securite/feed/", "max": 5, "lang": "fr"},
+      {"name": "Le Monde Informatique", "url": "https://www.lemondeinformatique.fr/flux-rss/thematique/securite/rss.xml", "max": 4, "lang": "fr"}
     ]},
-    {"title": "Analysis", "feeds": [
-      {"name": "Krebs on Security", "url": "https://krebsonsecurity.com/feed/", "max": 2},
-      {"name": "Schneier on Security", "url": "https://www.schneier.com/feed/atom/", "max": 2}
+    {"title": "Actualités cyber internationales", "feeds": [
+      {"name": "BleepingComputer", "url": "https://www.bleepingcomputer.com/feed/", "max": 5, "lang": "en"},
+      {"name": "The Hacker News", "url": "https://feeds.feedburner.com/TheHackersNews", "max": 5, "lang": "en"},
+      {"name": "Dark Reading", "url": "https://www.darkreading.com/rss.xml", "max": 4, "lang": "en"}
     ]},
-    {"title": "Standards and research", "feeds": [
-      {"name": "NIST news", "url": "https://www.nist.gov/news-events/news/rss.xml", "max": 3},
-      {"name": "arXiv cs.CR", "url": "https://rss.arxiv.org/rss/cs.CR", "max": 5}
+    {"title": "Analyses", "feeds": [
+      {"name": "Krebs on Security", "url": "https://krebsonsecurity.com/feed/", "max": 2, "lang": "en"},
+      {"name": "Schneier on Security", "url": "https://www.schneier.com/feed/atom/", "max": 2, "lang": "en"}
+    ]},
+    {"title": "Normes et recherche", "feeds": [
+      {"name": "NIST news", "url": "https://www.nist.gov/news-events/news/rss.xml", "max": 3, "lang": "en"},
+      {"name": "arXiv cs.CR", "url": "https://rss.arxiv.org/rss/cs.CR", "max": 3, "lang": "en"}
     ]}
   ],
   "radars": [
-    {"title": "Regulation watch", "keywords": ["DORA", "NIS2", "NIS 2", "GDPR", "RGPD", "ISO 27001", "AI Act", "Cyber Resilience Act", "ANSSI", "EIOPA", "EBA"]},
-    {"title": "Quantum and post-quantum", "keywords": ["post-quantum", "post quantum", "quantum", "PQC"]}
+    {"title": "Veille réglementaire", "keywords": ["DORA", "NIS2", "NIS 2", "GDPR", "RGPD", "ISO 27001", "AI Act", "Cyber Resilience Act", "ANSSI", "EIOPA", "EBA"]},
+    {"title": "Quantique et post-quantique", "keywords": ["post-quantum", "post quantum", "post-quantique", "quantique", "quantum", "PQC"], "exclude_sources": ["arXiv cs.CR"]}
   ],
   "max_radar_items": 6
 }

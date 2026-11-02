@@ -1,10 +1,13 @@
 #!/usr/bin/env python3
-"""Build the daily cyber digest and post it as an issue in this private repo.
+"""Build the daily cyber digest (in French) and post it as a GitHub issue in this repo.
 
-Phase 1 (this file): no AI. It reads the feeds listed in cyber_config.json, keeps
-what is recent, removes duplicates, highlights keyword matches (regulation,
-post-quantum) and posts the result. A broken feed is reported in the issue, and if
-no feed works the job fails loudly instead of posting an empty digest.
+Phase 1: no AI. It reads the feeds listed in cyber_config.json, keeps what is recent,
+removes duplicates, highlights keyword matches (regulation, post-quantum) and posts
+the result. A broken feed is reported in the issue, and if no feed works the job
+fails loudly instead of posting an empty digest.
+
+The repo is public, so everything posted here is public: only news headlines, no
+personal or employer data.
 
 Env: DRY_RUN=1 prints instead of posting; FORCE=1 skips the time and duplicate checks.
 """
@@ -23,7 +26,21 @@ TZ = ZoneInfo("Europe/Paris")
 POST_FROM_HOUR = 6
 ASSIGNEE = "alineuh"
 LABEL = "cyber"
+TITLE_PREFIX = "Veille cyber"
 MAX_BODY = 60000  # GitHub allows 65,536 characters
+
+DAYS = ["lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi", "dimanche"]
+MONTHS = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août",
+          "septembre", "octobre", "novembre", "décembre"]
+FLAGS = {"fr": "🇫🇷", "en": "🇬🇧"}
+# Dates repeated at the end of some titles (CERT-FR "02 novembre 2026", SANS "Mon, Nov 2nd")
+TRAIL_DATE_RE = re.compile(
+    r"[\s,]*(?:(?:Mon|Tue|Wed|Thu|Fri|Sat|Sun),?\s+[A-Za-z]{3}\s+\d{1,2}(?:st|nd|rd|th)"
+    r"|\d{1,2}(?:er)?\s+(?:" + "|".join(MONTHS) + r")\s+\d{4})\s*$", re.IGNORECASE)
+
+
+def french_date(dt):
+    return f"{DAYS[dt.weekday()]} {dt.day:02d} {MONTHS[dt.month - 1]} {dt.year}"
 
 
 def issue_exists(title):
@@ -56,11 +73,18 @@ def recent(items, cutoff):
     return kept
 
 
-def line(item, source, show_source=False):
-    title = feedlib.clean_text(item["title"], 140) or "(untitled)"
+def label(feed):
+    flag = FLAGS.get(feed.get("lang", ""), "")
+    return (flag + " " if flag else "") + feed["name"]
+
+
+def line(item, feed, show_source=False):
+    title = feedlib.clean_text(item["title"], 140)
+    title = TRAIL_DATE_RE.sub("", title).strip() or "(sans titre)"
     link = item["link"]
     head = f"[{title}]({link})" if link else title
-    meta = " · ".join(x for x in ((source if show_source else ""), item["date"].strftime("%Y-%m-%d") if item["date"] else "") if x)
+    date = item["date"].strftime("%Y-%m-%d") if item["date"] else ""
+    meta = " · ".join(x for x in ((label(feed) if show_source else ""), date) if x)
     desc = feedlib.clean_text(item["desc"], 160)
     text = f"- {head}" + (f" — {meta}" if meta else "")
     if desc and norm(desc) != norm(title):
@@ -70,25 +94,28 @@ def line(item, source, show_source=False):
 
 def build(config, results, now):
     cutoff = now - timedelta(hours=config["window_hours"])
-    pool = []  # (source, item) for everything recent, in config order
-    for group in config["groups"]:
-        for feed in group["feeds"]:
-            pool += [(feed["name"], i) for i in recent(results[feed["name"]]["items"], cutoff)]
+    feeds = [f for g in config["groups"] for f in g["feeds"]]
+    pool = []  # (feed, item) for everything recent, in config order
+    for feed in feeds:
+        pool += [(feed, i) for i in recent(results[feed["name"]]["items"], cutoff)]
 
     # Keyword radars come first; what they show is not repeated below.
     radar_lines, seen = [], set()
     for radar in config["radars"]:
+        excluded = set(radar.get("exclude_sources", []))
         hits = []
-        for source, item in pool:
+        for feed, item in pool:
+            if feed["name"] in excluded:
+                continue
             key = item["link"] or norm(item["title"])
             text = item["title"] + " " + item["desc"]
             if key not in seen and any(keyword_hit(k, text) for k in radar["keywords"]):
                 seen.add(key)
-                hits.append((source, item))
+                hits.append((feed, item))
             if len(hits) >= config["max_radar_items"]:
                 break
         if hits:
-            radar_lines.append(f"### {radar['title']}\n\n" + "\n".join(line(i, s, show_source=True) for s, i in hits))
+            radar_lines.append(f"### {radar['title']}\n\n" + "\n".join(line(i, f, show_source=True) for f, i in hits))
 
     group_lines = []
     for group in config["groups"]:
@@ -102,22 +129,22 @@ def build(config, results, now):
                 seen.add(key)
                 picked.append(item)
             if picked:
-                block.append(f"**{feed['name']}**\n" + "\n".join(line(i, feed["name"]) for i in picked))
+                block.append(f"**{label(feed)}**\n" + "\n".join(line(i, feed) for i in picked))
         if block:
             group_lines.append(f"### {group['title']}\n\n" + "\n\n".join(block))
 
     ok = sum(1 for r in results.values() if not r["error"])
     total = len(results)
-    problems = [f"{name}: {r['error']}" for name, r in results.items() if r["error"]]
-    parts = [f"## Cyber digest, {now.astimezone(TZ).strftime('%A %d %B %Y')}",
-             f"_{ok} of {total} feeds read · {len(pool)} items in the last {config['window_hours']} hours · headlines only, no AI selection yet_"]
+    problems = [f"{name} : {r['error']}" for name, r in results.items() if r["error"]]
+    parts = [f"## Veille cyber, {french_date(now.astimezone(TZ))}",
+             f"_{ok} flux sur {total} lus · {len(pool)} articles sur les dernières {config['window_hours']} heures · titres seuls, sans sélection par IA_"]
     if ok * 2 < total:
-        parts.append("> ⚠️ Fewer than half of the feeds worked today, so this digest is incomplete.")
+        parts.append("> ⚠️ Moins de la moitié des flux ont répondu aujourd'hui : ce digest est incomplet.")
     parts += radar_lines + group_lines
     if not (radar_lines or group_lines):
-        parts.append("_No new items in the window._")
+        parts.append("_Aucun nouvel article sur la période._")
     parts.append("---")
-    parts.append("_Feed problems: " + ("none" if not problems else "; ".join(problems)) + "_")
+    parts.append("_Flux en erreur : " + ("aucun" if not problems else " ; ".join(problems)) + "_")
     return "\n\n".join(parts)[:MAX_BODY], ok
 
 
@@ -137,7 +164,7 @@ def main():
         config = json.load(f)
     now = datetime.now(timezone.utc)
     paris = now.astimezone(TZ)
-    title = f"Cyber digest {paris.date().isoformat()}"
+    title = f"{TITLE_PREFIX} {paris.date().isoformat()}"
     force = os.environ.get("FORCE") == "1"
     dry = os.environ.get("DRY_RUN") == "1"
 
